@@ -85,3 +85,46 @@ namespace EFCoreCodeFirstDemo.Entities
 * **DbSet `<TEntity>`:** These properties represent collections of entities that EF Core tracks. They correspond to tables in the database, and each entity type (like Student and Branch) maps to a DbSet.
 
 Entity framework core will create two database tables for the above two model classes with the required relationships.
+
+In  **C# and Entity Framework** , an **entity** is simply a  **class that represents data in your application and maps to a table in a database** .
+
+Think of it like this:
+
+* Each **entity class** = a **table** in the database.
+* Each **instance of the class** = a **row** in that table.
+* Each **property** = a **column** in that table.
+
+##### **Methods Provided by DbContext**
+
+* **Add/Attach/Update/Remove** : Methods for adding, attaching, updating, or removing entities from the context.
+* **SaveChanges / SaveChangesAsync:** Persists changes to the database.
+* **Find / FindAsync:** Finds an entity by its primary key.
+* **Entry:** Provides access to change tracking information for a specific entity.
+* **OnConfiguring:** Allows configuring the context options (e.g., connection string) when not using dependency injection.
+* **AddRange/ AddRangeAsync:** This function adds a collection of new entities to DbContext with the Added state and starts tracking them. The new entities will be inserted into the database when SaveChanges() or SaveChangesAsync() is called.
+
+##### **Database Connection String**
+
+A database connection string is a string that specifies information about how to connect to a particular database
+
+A typical connection string includes:
+
+* **Server Name:** The name or network address of the database server.
+* **Database Name:** The name of the specific database to which to connect.
+* **Credentials:** Username and password for authenticating to the database.
+* **Other Settings:** Optional parameters like timeout settings, encryption settings, and more.
+
+![1760251778415](image/EFcorelearning/1760251778415.png)
+
+**Connection String Components:**
+
+* **Server=LAPTOP-6P5NK25R\SQLSERVER2022DEV:** Specifies the database server’s name or network address.
+* **Database=EFCoreDB1:** Indicates the name of the database to connect to or create if it doesn’t exist yet.
+* **Trusted_Connection=True:** Enables Windows Authentication mode, which uses your Windows credentials to connect to the database.
+* **TrustServerCertificate=True:** Instructs the connection to trust the server’s SSL certificate without requiring validation of the certificate’s chain of trust. This is often used in development environments.
+
+##### **Entity Framework Core Migration**
+
+Migrations in EF Core are a mechanism to keep your database schema in sync with your EF Core model. As your application evolves, your data model may change, requiring corresponding changes to the database schema. Migrations help manage these changes over time without losing data or creating inconsistencies.
+
+**Migration - "Add-Migration CreateEFCoreDB1"**
