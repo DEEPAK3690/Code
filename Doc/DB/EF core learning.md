@@ -35,47 +35,7 @@ EF core tool package - "**Install-Package Microsoft.EntityFrameworkCore.Tools**"
 
 The DbContext class is responsible for interacting with the database using the configured database provider
 
-`DbContext` in EF Core acts as a bridge between the application and the database. It tracks entity states, manages queries, and handles data persistence and relationships efficiently.s
-
-```csharp
-// Import the Entity Framework Core namespace to access DbContext and other EF Core functionalities.
-using Microsoft.EntityFrameworkCore; 
-
-namespace EFCoreCodeFirstDemo.Entities
-{
-    // EFCoreDbContext class inherits from DbContext, which is the primary class for interacting with the database using EF Core.
-    public class EFCoreDbContext : DbContext 
-    {
-        // Constructor that accepts DbContextOptions<EFCoreDbContext> as a parameter.
-        // The options parameter contains the settings required by EF Core to configure the DbContext,
-        // such as the connection string and provider.
-        public EFCoreDbContext(DbContextOptions<EFCoreDbContext> options)
-        : base(options) // The base(options) call passes the options to the base DbContext class constructor.
-        {
-        }
-
-        // OnConfiguring is an override method that allows configuring the DbContext options,
-        // like setting the database provider and connection string.
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            // Configure the database provider and connection string.
-            // UseSqlServer method configures the DbContext to use SQL Server as the database provider.
-            // The provided connection string specifies the server, database name, and credentials.
-            // Replace "Server=YourServerName;Database=YourDatabaseName;User Id=YourUsername;Password=YourPassword;"
-            // with your actual SQL Server details.
-            optionsBuilder.UseSqlServer("Server=YourServerName;Database=YourDatabaseName;User Id=YourUsername;Password=YourPassword;");
-        }
-
-        // DbSet<Student> Students represents a table in the database corresponding to the Student entity.
-        // EF Core uses DbSet<TEntity> to track changes and execute queries related to the Student entity.
-        public DbSet<Student> Students { get; set; }
-
-        // DbSet<Branch> Branches represents a table in the database corresponding to the Branch entity.
-        // Similar to the Students DbSet, this property is used by EF Core to track and manage Branch entities.
-        public DbSet<Branch> Branches { get; set; }
-    }
-}
-```
+`DbContext` in EF Core acts as a bridge between the application and the database. It tracks entity states, manages queries, and handles data persistence and relationships efficiently.
 
 ![1760248159333](image/EFcorelearning/1760248159333.png)
 
@@ -128,3 +88,12 @@ A typical connection string includes:
 Migrations in EF Core are a mechanism to keep your database schema in sync with your EF Core model. As your application evolves, your data model may change, requiring corresponding changes to the database schema. Migrations help manage these changes over time without losing data or creating inconsistencies.
 
 **Migration - "Add-Migration CreateEFCoreDB1"**
+
+**Update Database** -"**Update-Database**" need to sync our code base with the database using the **Update-Database **command**
+
+The most important point to remember is that whenever we add or modify domain classes or configurations, we need to sync the database with the model using the **Add-Migration** and **Update-Database** commands. Each time we generate the Migration, we need to provide a name that should have been provided earlier
+
+
+##### CRUD Operations
+
+![1760254961545](image/EFcorelearning/1760254961545.png)
