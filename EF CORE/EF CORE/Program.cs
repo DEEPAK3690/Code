@@ -88,9 +88,14 @@ namespace EF_CORE
         {
             // Retrieve all students from the context
             var students = context.Students.Include(s => s.Branch).ToList();
+            var student1s = context.Students.ToList();//lazy loading
             // Display the students in the console
             Console.WriteLine("All Students:");
             foreach (var student in students)
+            {
+                Console.WriteLine($"\t{student.StudentId}: {student.FirstName} {student.LastName}, Branch: {student.Branch?.BranchName}");
+            }
+            foreach (var student in student1s)
             {
                 Console.WriteLine($"\t{student.StudentId}: {student.FirstName} {student.LastName}, Branch: {student.Branch?.BranchName}");
             }

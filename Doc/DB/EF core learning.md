@@ -1,4 +1,4 @@
-# **EF core** 
+# **EF core**
 
 Entity Framework data access technology.
 
@@ -11,7 +11,7 @@ ORM stands for Object-Relational Mapping, a programming technique that allows de
 ORM allows developers to work with data in terms of objects rather than tables and columns. That means ORM automatically creates classes based on database tables,
 
 * **Simplifies Data Access:** ORMs abstract the complexities of data access, allowing developers to interact with the database in an object-oriented rather than writing complex SQL queries.
-* **Increased Productivity:** Developers can build applications faster by focusing on the application logic rather than data access details	
+* **Increased Productivity:** Developers can build applications faster by focusing on the application logic rather than data access details
 
 ## **EF Core Code First Approach:**
 
@@ -93,7 +93,24 @@ Migrations in EF Core are a mechanism to keep your database schema in sync with 
 
 The most important point to remember is that whenever we add or modify domain classes or configurations, we need to sync the database with the model using the **Add-Migration** and **Update-Database** commands. Each time we generate the Migration, we need to provide a name that should have been provided earlier
 
+##### LAZY loading
 
-##### CRUD Operations
+Related data is loaded **only when you access it** in code.
 
-![1760254961545](image/EFcorelearning/1760254961545.png)
+`var students = context.Students.ToList();
+
+`foreach (var s in students)
+{
+    Console.WriteLine(s.Name);
+    Console.WriteLine(s.Branch?.BranchName); // Triggers a new SQL query each time!
+}``
+
+##### **EAGER LOADING**
+
+Load the **main entity and all related data** together in  **one query** .
+
+`var students = context.Students .Include(s => s.Branch)  .ToList(); `
+
+`SELECT [s].[Id], [s].[Name], [s].[BranchId],[b].[Id], [b].[BranchName] FROM [Students] `
+
+`AS [s] LEFT JOIN [Branches] AS [b] ON [s].[BranchId] = [b].[Id]; `
