@@ -1,1 +1,4 @@
 /.vs
+/EF CORE/.vs
+/EF CORE/EF CORE/bin
+/EF CORE/EF CORE/obj
