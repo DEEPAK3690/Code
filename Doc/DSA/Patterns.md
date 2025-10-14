@@ -37,3 +37,27 @@ For complex patterns like diamonds, pyramids, or hourglass shapes, look for  **s
 * Left side and right side
 
 ## Pyramid/Triangle Pattern
+
+```
+    *
+   ***
+  *****
+ *******
+*********
+```
+
+Rows = 5
+
+Columns = 9
+
+[space] - [star] - [space]
+
+[4, 1, 4] - 0
+[3, 3, 3] - 1
+[2, 5, 2] - 2
+[1, 7, 1] - 3
+[0, 9, 0] - 4
+
+Space = (n - i - 1)
+
+Star = (2 * i + 1) {i.e one more than twice} - The number multiplied by two, then increased by one
