@@ -1,0 +1,39 @@
+# PATTERNS
+
+## Understand the structure of a pattern
+
+Every pattern is made up of **rows** and  **columns** .
+
+Think like this:
+
+* **Outer loop → rows**
+* **Inner loop → columns (what to print in each row)**
+
+## The Four-Step Universal Approach
+
+**Step 1: Count the Number of Rows (Outer Loop)**
+
+The first step is to identify how many **rows** (or lines) the pattern has. This determines what your outer loop will be. Simply count the horizontal lines in the pattern from top to bottom.
+
+For example, if a pattern has 5 lines, your outer loop will run 5 times:
+
+**Step 2: Focus on Columns and Connect Them to Rows (Inner Loop)**
+
+For each row, determine how many **columns** (or elements) need to be printed. This is where you use nested loops. The key is to establish a relationship between the row number and the number of columns.
+
+**Step 3: Determine What to Print**
+
+Inside the inner loop, identify what needs to be printed at each position. This could be:
+
+* A star (`*`)
+* The row number (`i`)
+* The column number (`j`)
+
+**Step 4: Observe Symmetry (Optional)**
+
+For complex patterns like diamonds, pyramids, or hourglass shapes, look for  **symmetry** . Many patterns can be broken down into two simpler patterns:
+
+* Upper half and lower half
+* Left side and right side
+
+## Pyramid/Triangle Pattern
