@@ -43,6 +43,30 @@ namespace DSA.Patterns
                 Console.WriteLine();
             }
         }
+        public static void PrintInvertedPyramidPattern(int n)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                int space = i;
+                int stars = (2 * n) - (2 * i + 1);
+
+                for (int j = 0; j < space; j++)
+                {
+                    Console.Write(" ");
+                }
+
+                for (int j = 0; j < stars; j++)
+                {
+                    Console.Write("*");
+                }
+
+                for (int j = 0; j < space; j++)
+                {
+                    Console.Write(" ");
+                }
+                Console.WriteLine();
+            }
+        }
 
 
     }

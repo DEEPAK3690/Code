@@ -6,7 +6,7 @@ namespace DSA
     {
         static void Main(string[] args)
         {
-            Pattern_Enum pattern = Pattern_Enum.pyramid;
+            Pattern_Enum pattern = Pattern_Enum.InvertedPyramid;
             switch (pattern)
             {
                 case Pattern_Enum.square:
@@ -14,6 +14,9 @@ namespace DSA
                     break;
                 case Pattern_Enum.pyramid:
                     Patterns_Problems.PrintPyramidPattern(5);
+                    break;
+                case Pattern_Enum.InvertedPyramid:
+                    Patterns_Problems.PrintInvertedPyramidPattern(5);
                     break;
                 default:
                     break;

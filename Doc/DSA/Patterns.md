@@ -61,3 +61,76 @@ Columns = 9
 Space = (n - i - 1)
 
 Star = (2 * i + 1) {i.e one more than twice} - The number multiplied by two, then increased by one
+
+```
+ for (int i = 0; i < n; i++)
+ {
+     int space = n - i - 1;
+     int stars = 2 * i + 1;
+
+     for (int j = 0; j < space; j++)
+     {
+         Console.Write(" ");
+     }
+
+     for (int j = 0; j < stars; j++)
+     {
+         Console.Write("*");
+     }
+
+     for (int j = 0; j < space; j++)
+     {
+         Console.Write(" ");
+     }
+     Console.WriteLine();
+ }
+```
+
+
+```
+*********
+ *******
+  *****
+   ***
+    *
+```
+
+Rows = 5
+
+Columns = 9
+
+[space] - [star] - [space]
+
+[0, 9, 0] - 0
+[1, 7, 1] - 1
+[2, 5, 2] - 2
+[3, 3, 3] - 3
+[4, 1, 4] - 4
+
+Space = ( i )
+
+Star = (2 * n ) - (2 * i + 1)
+
+```
+for (int i = 0; i < n; i++)
+{
+    int space = i;
+    int stars = (2 * n) - (2 * i + 1);
+
+    for (int j = 0; j < space; j++)
+    {
+        Console.Write(" ");
+    }
+
+    for (int j = 0; j < stars; j++)
+    {
+        Console.Write("*");
+    }
+
+    for (int j = 0; j < space; j++)
+    {
+        Console.Write(" ");
+    }
+    Console.WriteLine();
+}
+```

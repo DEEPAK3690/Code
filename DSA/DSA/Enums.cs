@@ -10,5 +10,6 @@ namespace DSA
     {
         square,
         pyramid,
+        InvertedPyramid,
     }
 }
