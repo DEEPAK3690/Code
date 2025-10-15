@@ -36,7 +36,7 @@ For complex patterns like diamonds, pyramids, or hourglass shapes, look for  **s
 * Upper half and lower half
 * Left side and right side
 
-## Pyramid/Triangle Pattern
+## Pyramid Pattern
 
 ```
     *
@@ -85,7 +85,6 @@ Star = (2 * i + 1) {i.e one more than twice} - The number multiplied by two, the
      Console.WriteLine();
  }
 ```
-
 
 ```
 *********
