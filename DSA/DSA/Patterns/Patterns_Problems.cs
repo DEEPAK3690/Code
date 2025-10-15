@@ -68,6 +68,46 @@ namespace DSA.Patterns
             }
         }
 
+        public static void PrintDiamondPattern(int n)
+        {
+            PrintPyramidPattern(n);
+            PrintInvertedPyramidPattern(n);
+        }
 
+        public static void PrintHalfDiamondPattern(int n)
+        {
+            int rows = 9;
+            int upperHalfRows = 5;
+            for (int i = 1; i <= rows; i++)
+            {
+                int stars = i;
+
+                if (i > upperHalfRows)
+                    stars = 2 * upperHalfRows - i;
+
+                for (int j = 1; j <= stars; j++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        public static void PrintBinary_TrianglePattern(int n)
+        {
+            for (int i = 1; i <= n; i++)
+            {
+                int start = 1;
+                if (i % 2 == 0)
+                    start = 0;
+                for (int j = 1; j <= i; j++)
+                {
+                    Console.Write(start + " ");
+                    start = 1 - start;
+                }
+                Console.WriteLine();
+
+            }
+        }
     }
 }

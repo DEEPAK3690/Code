@@ -11,5 +11,8 @@ namespace DSA
         square,
         pyramid,
         InvertedPyramid,
+        Diamond,
+        Half_Diamond,
+        Binary_Triangle 
     }
 }

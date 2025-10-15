@@ -3,10 +3,11 @@
 namespace DSA
 {
     internal class Program
-    {
+    {   
         static void Main(string[] args)
         {
-            Pattern_Enum pattern = Pattern_Enum.InvertedPyramid;
+            Pattern_Enum pattern = Pattern_Enum.Binary_Triangle;
+
             switch (pattern)
             {
                 case Pattern_Enum.square:
@@ -17,6 +18,15 @@ namespace DSA
                     break;
                 case Pattern_Enum.InvertedPyramid:
                     Patterns_Problems.PrintInvertedPyramidPattern(5);
+                    break;
+                case Pattern_Enum.Diamond:
+                    Patterns_Problems.PrintDiamondPattern(5);
+                    break;
+                case Pattern_Enum.Half_Diamond:
+                    Patterns_Problems.PrintHalfDiamondPattern(5);
+                    break;
+                case Pattern_Enum.Binary_Triangle:
+                    Patterns_Problems.PrintBinary_TrianglePattern(5);
                     break;
                 default:
                     break;

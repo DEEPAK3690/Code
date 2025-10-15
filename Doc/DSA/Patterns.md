@@ -86,6 +86,8 @@ Star = (2 * i + 1) {i.e one more than twice} - The number multiplied by two, the
  }
 ```
 
+## Inverted Pyramid
+
 ```
 *********
  *******
@@ -132,4 +134,112 @@ for (int i = 0; i < n; i++)
     }
     Console.WriteLine();
 }
+```
+
+## Diamond
+
+```
+    *
+   ***
+  *****
+ *******
+*********
+*********
+ *******
+  *****
+   ***
+    *
+```
+
+Here observe the Symmetry
+
+Diamond = Upper Half Pyramid + Lower Half Inverted Pyramid
+
+## Half Diamond
+
+```
+*
+**
+***
+****
+*****
+****
+***
+**
+*
+```
+
+Rows = 9
+
+Column = 5
+
+Here observe the Symmetry
+
+Upper half Rows = 5
+
+* Inner loop = No rows  equals No of columns = rows equals stars
+* Upper half Column= (i) times
+
+Lower half Rows = 4
+
+* Lower half = Decrease in stars (2 * Upperhalf - row) = (2 * n - i)
+
+```
+int rows = 9;
+int upperHalfRows = 5;
+for (int i = 1; i <= rows; i++)
+{
+    int stars = i;
+
+    if (i > upperHalfRows)
+        stars = 2 * upperHalfRows - i;
+
+    for (int j = 1; j <= stars; j++)
+    {
+        Console.Write("*");
+    }
+    Console.WriteLine();
+}
+```
+
+## Binary Triangle
+
+```
+1
+0 1
+1 0 1
+0 1 0 1
+1 0 1 0 1
+```
+
+Rows = 5
+
+Column = 5
+
+Each row follows an **odd-even pattern** .
+
+Each column alternates (flips) between `0` and `1`.
+
+> Logic Explanation
+
+Inner loop = No rows equals No of columns
+
+* Column = (i) times
+* Start = ( i % 2 == 0)
+* Flip values = (1- start)
+
+```
+ for (int i = 1; i <= n; i++)
+ {
+     int start = 1;
+     if (i % 2 == 0)
+         start = 0;
+     for (int j = 1; j <= i; j++)
+     {
+         Console.Write(start + " ");
+         start = 1 - start;
+     }
+     Console.WriteLine();
+
+ }
 ```
