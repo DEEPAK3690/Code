@@ -114,3 +114,13 @@ Load the **main entity and all related data** together in  **one query** .
 `SELECT [s].[Id], [s].[Name], [s].[BranchId],[b].[Id], [b].[BranchName] FROM [Students] `
 
 `AS [s] LEFT JOIN [Branches] AS [b] ON [s].[BranchId] = [b].[Id]; `
+
+
+##### CRUD OPERATIONS
+
+Four basic operations performed in Database 
+
+* **Create:** Inserting new records into a database.
+* **Read:** Retrieving data from the database, often referred to as querying.
+* **Update:** Modifying existing records in the database.
+* **Delete:** Removing records from the database.
