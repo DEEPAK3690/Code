@@ -13,6 +13,7 @@ namespace DSA
         InvertedPyramid,
         Diamond,
         Half_Diamond,
-        Binary_Triangle 
+        Binary_Triangle,
+        Symmetrical_Numbers
     }
 }

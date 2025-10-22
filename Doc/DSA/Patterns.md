@@ -243,3 +243,20 @@ Inner loop = No rows equals No of columns
 
  }
 ```
+
+## Symmetrical_Numbers
+
+```
+
+```
+
+Rows = 5
+
+Columns = 9
+
+[number ] - [space ] - [number]
+
+[1, 6, 1] - 1
+[2, 4, 2] - 2
+[3, 2, 3] - 3
+[4, 0, 4] - 4
