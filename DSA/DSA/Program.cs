@@ -6,7 +6,7 @@ namespace DSA
     {   
         static void Main(string[] args)
         {
-            Pattern_Enum pattern = Pattern_Enum.Symmetrical_Numbers;
+            Pattern_Enum pattern = Pattern_Enum.Character_Triangle;
 
             switch (pattern)
             {
@@ -29,10 +29,13 @@ namespace DSA
                     Patterns_Problems.PrintBinary_TrianglePattern(5);
                     break;
                 case Pattern_Enum.Symmetrical_Numbers:
-                    Patterns_Problems.PrintSymmetrical_NumbersPattern(4);
+                    Patterns_Problems.PrintSymmetrical_NumbersPattern(5);
                     break;
                 case Pattern_Enum.Number_Triangle:
-                    Patterns_Problems.PrintSymmetrical_NumbersPattern(4);
+                    Patterns_Problems.PrintNumber_TrianglePattern(5);
+                    break;
+                case Pattern_Enum.Character_Triangle:
+                    Patterns_Problems.PrintCharacter_TrianglePattern(5);
                     break;
                 default:
                     break;

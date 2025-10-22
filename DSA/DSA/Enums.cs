@@ -14,6 +14,8 @@ namespace DSA
         Diamond,
         Half_Diamond,
         Binary_Triangle,
-        Symmetrical_Numbers, Number_Triangle
+        Symmetrical_Numbers, 
+        Number_Triangle,
+        Character_Triangle
     }
 }

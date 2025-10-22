@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DSA.Patterns
 {
@@ -136,6 +137,35 @@ namespace DSA.Patterns
                 Console.WriteLine();
                 space -= 2;
 
+            }
+        }
+        public static void PrintNumber_TrianglePattern(int n)
+        {
+            int number = 1;
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    Console.Write(number++ + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+        public static void PrintCharacter_TrianglePattern(int n)
+        {
+            for (int i = 0; i <= n; i++)
+            {
+                char ch = 'A';
+
+                //for (char c = 'A'; c < 'A' + i; c++)
+                //{
+                //    Console.Write(ch ++ + " ");
+                //}
+                for (int j = 1; j <= i; j++)
+                {
+                    Console.Write(ch++ + " ");
+                }
+                Console.WriteLine();
             }
         }
     }

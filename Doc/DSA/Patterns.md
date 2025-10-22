@@ -291,3 +291,37 @@ Space = 2 x (n - 1)
 
  }
 ```
+
+## Number Right Angled Triangle
+
+```
+1
+2 3
+4 5 6
+7 8 9 10
+11 12 13 14 15
+```
+
+Rows = 5
+
+Column = 5
+
+The numbers are incremented by 1
+
+outer loop  = Rows
+
+Inner loop = No rows equals No of columns
+
+value = value + 1
+
+```
+int number = 1;
+for (int i = 1; i <= n; i++)
+{
+    for (int j = 1; j <= i; j++)
+    {
+        Console.Write(number++ + " ");
+    }
+    Console.WriteLine();
+}
+```
