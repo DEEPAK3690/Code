@@ -247,12 +247,13 @@ Inner loop = No rows equals No of columns
 ## Symmetrical_Numbers
 
 ```
-
+1             1
+1 2         2 1
+1 2 3     3 2 1
+1 2 3 4 4 3 2 1
 ```
 
-Rows = 5
-
-Columns = 9
+Rows = 4
 
 [number ] - [space ] - [number]
 
@@ -260,3 +261,33 @@ Columns = 9
 [2, 4, 2] - 2
 [3, 2, 3] - 3
 [4, 0, 4] - 4
+
+Number = ( i ) = rows
+
+Space = 2 x (n - 1)
+
+```
+ for (int i = 1; i <= n; i++)
+ {
+
+     int num = i;
+     for (int j = 1; j <= i; j++)
+     {
+         Console.Write(j + " ");
+     }
+
+     int space = 2 * (n - i);
+     for (int j = 0; j < space; j++)
+     {
+         Console.Write("* ");
+     }
+
+     for (int j = i; j >= 1; j--)
+     {
+         Console.Write(j + " ");
+     }
+
+     Console.WriteLine();
+
+ }
+```
