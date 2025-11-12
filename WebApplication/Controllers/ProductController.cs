@@ -4,10 +4,12 @@ using System;
 
 namespace MyWebApplication.Controllers
 {
+    //As per RESTful Service, each resource should have a Unique Identifier or URI.
+
     //Attribute-Based Routing:
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]/[action]")] //Sets the base route; [controller] is replaced with the controller name(product), making the URL /api/product.
     [ApiController]
-    public class ProductController : Controller
+    public class ProductController : ControllerBase
     {
         private static List<Product> _products = new List<Product>
         {
@@ -17,7 +19,7 @@ namespace MyWebApplication.Controllers
         };
 
         [HttpGet]
-        public ActionResult<IEnumerable<Product>> GetProducts()
+        public ActionResult<IEnumerable<Product>> GetProducts()//action method
         {
             return Ok(_products);
         }
