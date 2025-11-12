@@ -57,6 +57,10 @@ An **HTTP response** is a message sent by the **server** back to the **client** 
 | 204 No Content  | Success, but no data returned | Successful DELETE              |
 | 400 Bad Request | Invalid input                 | Missing fields or invalid data |
 
+Swagger is also a client API Tool, and using Swagger, we can also test the Web APIs.
+
+* **ControllerBase** → Provides features needed for **APIs** (No views, just JSON/XML responses).
+* **Controller** → Used in **MVC applications** where you need both API and Razor Views (it inherits from ControllerBase and adds view-related features like View(), PartialView(), etc.).
 
 **Routing in Web API**
 
@@ -64,10 +68,7 @@ Routing decides  **which URL maps to which controller and action** .
 
 Without routing, your API wouldn’t know which method to execute for a given HTTP request.
 
-Every time you define endpoints in your API — so clients can reach specific resources.
-
-
-Swagger is also a client API Tool, and using Swagger, we can also test the Web APIs.
+Every time you define endpoints in your API — so clients can reach specific resources
 
 
 | Type             | Description                          | Example                          |
@@ -85,3 +86,15 @@ public class ProductsController : ControllerBase
 🔹 URL: `/api/products/10`
 
 🔹 Output: `Product ID: 10`
+
+Models and DTOs
+
+
+A **Model** defines the structure of your data (like a database table).
+
+A **DTO (Data Transfer Object)** is used to control what data is sent to the client.
+
+
+
+* **Without DTO:** Send entire model → might leak internal data.
+* **With DTO:** Send only safe, required fields → secure & optimized.

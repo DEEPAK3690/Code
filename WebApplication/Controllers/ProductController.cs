@@ -18,7 +18,7 @@ namespace MyWebApplication.Controllers
             new Product { Id = 3, Name = "Mobile", Price = 300.00m, Category = "Electronics" },
         };
 
-        [HttpGet]
+        [HttpGet] // ActionResult: returns both data and HTTP status
         public ActionResult<IEnumerable<Product>> GetProducts()//action method
         {
             return Ok(_products);
