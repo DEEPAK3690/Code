@@ -1,5 +1,8 @@
 ﻿//using Microsoft.AspNetCore.Http;
 //using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Builder; // Add this using directive
+using Microsoft.Extensions.DependencyInjection; // Add this using directive
+using Microsoft.Extensions.Hosting; // Add this using directive
 
 using MyWebApplication.Models;
 
@@ -9,7 +12,7 @@ namespace MyWebApplication
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args);
 
             // Add services to the container.
             // Register the EmployeeRepository for Dependency Injection
@@ -33,6 +36,12 @@ namespace MyWebApplication
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            // Add demo middlewares to show the flow
+            app.UseMiddleware<WebApplication.Middleware.FirstMiddleware>();
+            app.UseMiddleware<WebApplication.Middleware.SecondMiddleware>();
+            app.UseMiddleware<WebApplication.Middleware.ThirdMiddleware>();
+            app.UseMiddleware<WebApplication.Middleware.RequestLoggingMiddleware>();
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
