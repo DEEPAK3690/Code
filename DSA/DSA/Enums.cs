@@ -18,4 +18,12 @@ namespace DSA
         Number_Triangle,
         Character_Triangle
     }
+
+    public enum LogicalProblem
+    {
+
+
+
+
+    }
 }

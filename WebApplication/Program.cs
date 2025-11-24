@@ -17,6 +17,7 @@ namespace MyWebApplication
             // Add services to the container.
             // Register the EmployeeRepository for Dependency Injection
             builder.Services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
+
             builder.Services.AddControllers();//Register all controller classes with the DI container.
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -44,7 +45,9 @@ namespace MyWebApplication
             app.UseMiddleware<WebApplication.Middleware.RequestLoggingMiddleware>();
             app.UseHttpsRedirection();
             app.UseAuthorization();
+
             app.MapControllers();
+
 
             app.Run();
         }
