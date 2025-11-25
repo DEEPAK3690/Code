@@ -93,6 +93,8 @@ Migrations in EF Core are a mechanism to keep your database schema in sync with 
 
 The most important point to remember is that whenever we add or modify domain classes or configurations, we need to sync the database with the model using the **Add-Migration** and **Update-Database** commands. Each time we generate the Migration, we need to provide a name that should have been provided earlier
 
+IF the is a change on class / tables / propery/ delete migration is required 
+
 ##### LAZY loading
 
 Related data is loaded **only when you access it** in code.
@@ -115,10 +117,9 @@ Load the **main entity and all related data** together in  **one query** .
 
 `AS [s] LEFT JOIN [Branches] AS [b] ON [s].[BranchId] = [b].[Id]; `
 
-
 ##### CRUD OPERATIONS
 
-Four basic operations performed in Database 
+Four basic operations performed in Database
 
 * **Create:** Inserting new records into a database.
 * **Read:** Retrieving data from the database, often referred to as querying.
