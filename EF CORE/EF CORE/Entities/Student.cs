@@ -11,7 +11,7 @@ namespace EF_CORE.Entities
     [Table("tb_Students")]
     public class Student
     {
-        [Key]
+        [Key]//used to denaote as primary key
         public int Students { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
@@ -19,9 +19,13 @@ namespace EF_CORE.Entities
         public string? Gender { get; set; }
 
         [Column("EmailAddress")]
+        [MaxLength(100)]
         public string? Email { get; set; }
         public string? PhoneNumber { get; set; }
         public DateTime EnrollmentDate { get; set; }
+
+        [NotMapped]
+        public int? customid { get; set; }
 
         // Navigation property representing the Branch the student is enrolled in
         public virtual Branch? Branch { get; set; }
