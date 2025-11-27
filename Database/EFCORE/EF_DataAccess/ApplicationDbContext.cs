@@ -32,7 +32,6 @@ namespace EF_DataAccess
 
             modelBuilder.Entity<F_Publisher>().ToTable("Fluent_Publisher");//table name cahnge
             modelBuilder.Entity<F_Publisher>().HasKey(p => p.Publisher_Id);
-            modelBuilder.Entity<F_Publisher>().Ignore(p => p.Location); //ignoring full name property
 
             modelBuilder.Entity<Book>().Property(u => u.Price).HasPrecision(10, 5);
 
