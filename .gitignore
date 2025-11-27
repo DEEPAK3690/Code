@@ -26,3 +26,5 @@
 /Database/EFCORE/EF_DataModel/bin
 /Database/EFCORE/EF_DataAccess/.vs
 /Database/EFCORE/EF_DataAccess/.vs
+/Database/EFCORE/EF_console/bin
+/Database/EFCORE/EF_console/obj
