@@ -19,3 +19,8 @@
 /c\#/SRP/obj
 /c\#/TestProject1/obj
 /c\#/TestProject1/bin
+/Database/EFCORE/EF_DataAccess/.vs/EF_DataAccess
+/Database/EFCORE/EF_DataAccess/bin/Debug
+/Database/EFCORE/EF_DataAccess/obj
+/Database/EFCORE/EF_DataModel/obj
+/Database/EFCORE/EF_DataModel/bin
