@@ -2,6 +2,7 @@
 using EF_DataModel.Models;
 using EF_DataModel.FluentModels;
 using EF_DataAccess.FluentConfig;
+using Microsoft.Extensions.Logging;
 
 namespace EF_DataAccess
 {
@@ -10,7 +11,7 @@ namespace EF_DataAccess
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-TRSDUK0\DEMOSERVER;Database=EFCoreDB2;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-TRSDUK0\DEMOSERVER;Database=EFCoreDB2;Trusted_Connection=True;TrustServerCertificate=True;").LogTo(Console.WriteLine,LogLevel.Information);
 
         }
 
