@@ -15,8 +15,7 @@ namespace EF_DataModel.FluentModels
         public int NumberOfPages { get; set; }
         public string Weight { get; set; }
 
-        //[ForeignKey("Book")]
-        //public int BookId { get; set; }
-        //public F_Book Book { get; set; }
+        public int BookId { get; set; }
+        public F_Book Book { get; set; }
     }
 }

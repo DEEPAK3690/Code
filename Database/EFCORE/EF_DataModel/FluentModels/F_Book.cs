@@ -13,7 +13,7 @@ namespace EF_DataModel.FluentModels
         public decimal Price { get; set; }
         public string PriceRange { get; set; }
 
-        //public F_BookDetail BookDetail { get; set; }
+        public F_BookDetail BookDetail { get; set; }
 
         //[ForeignKey("Publisher")]
         //public int Publisher_Id { get; set; }

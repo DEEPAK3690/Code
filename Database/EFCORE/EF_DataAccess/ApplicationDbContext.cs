@@ -25,6 +25,7 @@ namespace EF_DataAccess
             modelBuilder.Entity<F_BookDetail>().Property(p => p.Weight).HasColumnName("bookweight"); //column name change
             modelBuilder.Entity<F_BookDetail>().Property(p => p.NumberOfChapters).IsRequired(); //required key
             modelBuilder.Entity<F_BookDetail>().HasKey(p => p.BookDetail_Id);
+            modelBuilder.Entity<F_BookDetail>().HasOne(b=> b.Book).WithOne(b => b.BookDetail).HasForeignKey<F_BookDetail>(b => b.BookId);
 
             modelBuilder.Entity<F_Author>().ToTable("Fluent_Author");//table name cahnge
             modelBuilder.Entity<F_Author>().HasKey(p => p.Author_Id);
