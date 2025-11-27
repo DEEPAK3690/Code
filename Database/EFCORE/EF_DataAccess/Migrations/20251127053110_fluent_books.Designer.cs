@@ -4,6 +4,7 @@ using EF_DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EF_DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbcontext))]
-    partial class ApplicationDbcontextModelSnapshot : ModelSnapshot
+    [Migration("20251127053110_fluent_books")]
+    partial class fluent_books
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,34 +38,6 @@ namespace EF_DataAccess.Migrations
                     b.HasIndex("BooksBookId");
 
                     b.ToTable("AuthorBook");
-                });
-
-            modelBuilder.Entity("EF_DataModel.FluentModels.F_Author", b =>
-                {
-                    b.Property<int>("Author_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Author_Id"));
-
-                    b.Property<DateTime>("BirthDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Author_Id");
-
-                    b.ToTable("Fluent_Author", (string)null);
                 });
 
             modelBuilder.Entity("EF_DataModel.FluentModels.F_Book", b =>
@@ -92,47 +67,6 @@ namespace EF_DataAccess.Migrations
                     b.HasKey("BookId");
 
                     b.ToTable("Fluent_Book", (string)null);
-                });
-
-            modelBuilder.Entity("EF_DataModel.FluentModels.F_BookDetail", b =>
-                {
-                    b.Property<int>("BookDetail_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookDetail_Id"));
-
-                    b.Property<int>("NumberOfChapters")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumberOfPages")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Weight")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("bookweight");
-
-                    b.HasKey("BookDetail_Id");
-
-                    b.ToTable("Fluent_BookDetails", (string)null);
-                });
-
-            modelBuilder.Entity("EF_DataModel.FluentModels.F_Publisher", b =>
-                {
-                    b.Property<int>("Publisher_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Publisher_Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Publisher_Id");
-
-                    b.ToTable("Fluent_Publisher", (string)null);
                 });
 
             modelBuilder.Entity("EF_DataModel.Models.Author", b =>
@@ -178,8 +112,7 @@ namespace EF_DataAccess.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<decimal>("Price")
-                        .HasPrecision(10, 5)
-                        .HasColumnType("decimal(10,5)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Publisher_Id")
                         .HasColumnType("int");
@@ -193,48 +126,6 @@ namespace EF_DataAccess.Migrations
                     b.HasIndex("Publisher_Id");
 
                     b.ToTable("Books");
-
-                    b.HasData(
-                        new
-                        {
-                            BookId = 1,
-                            ISBN = "123B12",
-                            Price = 10.99m,
-                            Publisher_Id = 1,
-                            Title = "Spider without Duty"
-                        },
-                        new
-                        {
-                            BookId = 2,
-                            ISBN = "12123B12",
-                            Price = 11.99m,
-                            Publisher_Id = 1,
-                            Title = "Fortune of time"
-                        },
-                        new
-                        {
-                            BookId = 3,
-                            ISBN = "77652",
-                            Price = 20.99m,
-                            Publisher_Id = 2,
-                            Title = "Fake Sunday"
-                        },
-                        new
-                        {
-                            BookId = 4,
-                            ISBN = "CC12B12",
-                            Price = 25.99m,
-                            Publisher_Id = 3,
-                            Title = "Cookie Jar"
-                        },
-                        new
-                        {
-                            BookId = 5,
-                            ISBN = "90392B33",
-                            Price = 40.99m,
-                            Publisher_Id = 3,
-                            Title = "Cloudy Forest"
-                        });
                 });
 
             modelBuilder.Entity("EF_DataModel.Models.BookDetail", b =>
@@ -285,26 +176,6 @@ namespace EF_DataAccess.Migrations
                     b.HasKey("Publisher_Id");
 
                     b.ToTable("Publishers");
-
-                    b.HasData(
-                        new
-                        {
-                            Publisher_Id = 1,
-                            Location = "Chicago",
-                            Name = "Pub 1 Jimmy"
-                        },
-                        new
-                        {
-                            Publisher_Id = 2,
-                            Location = "New York",
-                            Name = "Pub 2 John"
-                        },
-                        new
-                        {
-                            Publisher_Id = 3,
-                            Location = "Hawaii",
-                            Name = "Pub 3 Ben"
-                        });
                 });
 
             modelBuilder.Entity("AuthorBook", b =>
