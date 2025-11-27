@@ -9,16 +9,16 @@ namespace EF_console
         {
             using (var context = new ApplicationDbcontext())
             {
-                //context.Database.EnsureCreated();
+                context.Database.EnsureCreated();
 
-                //if (context.Database.GetPendingMigrations().Count() > 0)// to enusure migration is created
-                //{
-                //    context.Database.Migrate();
-                //}
+                if (context.Database.GetPendingMigrations().Count() > 0)// to enusure migration is created
+                {
+                    context.Database.Migrate();
+                }
 
-                //getallbooks(context);
-                //ADDbooks(context);
-                //Getbook(context);
+                getallbooks(context);
+                ADDbooks(context);
+                Getbook(context);
                 updatebook(context);
             }
 
