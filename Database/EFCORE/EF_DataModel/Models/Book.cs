@@ -22,5 +22,7 @@ namespace EF_DataModel.Models
 
         public Publisher Publisher { get; set; }
 
+        public List<Author> Authors { get; set; } 
+
     }
 }

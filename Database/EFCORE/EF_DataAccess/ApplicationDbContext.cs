@@ -42,6 +42,7 @@ namespace EF_DataAccess
         public DbSet<BookDetail> BookDetails { get; set; }
 
         public DbSet<Publisher> Publishers { get; set; }
+        public DbSet<Author> Authors { get; set; }
 
-    }
+        }
 }
