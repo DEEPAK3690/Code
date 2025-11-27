@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using EF_DataModel.Models;
 using EF_DataModel.FluentModels;
+using EF_DataAccess.FluentConfig;
 
 namespace EF_DataAccess
 {
@@ -15,24 +16,10 @@ namespace EF_DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)//fluent api configurations
         {
-
-            modelBuilder.Entity<F_Book>().ToTable("Fluent_Book");//table name cahnge
-            modelBuilder.Entity<F_Book>().Property(p => p.Price).HasColumnName("BookPrice"); //column name change
-            modelBuilder.Entity<F_Book>().Property(p => p.Title).IsRequired(); //required key
-            modelBuilder.Entity<F_Book>().HasKey(p => p.BookId);
-
-            modelBuilder.Entity<F_BookDetail>().ToTable("Fluent_BookDetails");//table name cahnge
-            modelBuilder.Entity<F_BookDetail>().Property(p => p.Weight).HasColumnName("bookweight"); //column name change
-            modelBuilder.Entity<F_BookDetail>().Property(p => p.NumberOfChapters).IsRequired(); //required key
-            modelBuilder.Entity<F_BookDetail>().HasKey(p => p.BookDetail_Id);
-            modelBuilder.Entity<F_BookDetail>().HasOne(b=> b.Book).WithOne(b => b.BookDetail).HasForeignKey<F_BookDetail>(b => b.BookId);
-
-            modelBuilder.Entity<F_Author>().ToTable("Fluent_Author");//table name cahnge
-            modelBuilder.Entity<F_Author>().HasKey(p => p.Author_Id);
-            modelBuilder.Entity<F_Author>().Ignore(p => p.FullName); //ignoring full name property
-
-            modelBuilder.Entity<F_Publisher>().ToTable("Fluent_Publisher");//table name cahnge
-            modelBuilder.Entity<F_Publisher>().HasKey(p => p.Publisher_Id);
+            modelBuilder.ApplyConfiguration(new FluentBookconfig());
+            modelBuilder.ApplyConfiguration(new FluentBookDetailconfig());
+            modelBuilder.ApplyConfiguration(new FluentAuthorconfig());
+            modelBuilder.ApplyConfiguration(new FluentPublisherconfig());
 
             modelBuilder.Entity<Book>().Property(u => u.Price).HasPrecision(10, 5);
 

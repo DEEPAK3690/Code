@@ -12,7 +12,6 @@ namespace EF_DataModel.FluentModels
         public int Publisher_Id { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
-
-        //public List<F_Book> Books { get; set; }
+        public List<F_Book> Books { get; set; }
     }
 }

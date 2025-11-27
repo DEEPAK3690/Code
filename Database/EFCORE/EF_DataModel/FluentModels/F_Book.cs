@@ -16,9 +16,9 @@ namespace EF_DataModel.FluentModels
         public F_BookDetail BookDetail { get; set; }
 
         //[ForeignKey("Publisher")]
-        //public int Publisher_Id { get; set; }
+        public int Publisher_Id { get; set; }
 
-        //public F_Publisher Publisher { get; set; }
+        public F_Publisher Publisher { get; set; }
 
         //public List<F_Author> Authors { get; set; } 
 
