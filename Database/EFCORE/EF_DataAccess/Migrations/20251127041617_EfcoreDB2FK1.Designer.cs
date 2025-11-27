@@ -3,6 +3,7 @@ using EF_DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EF_DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbcontext))]
-    partial class ApplicationDbcontextModelSnapshot : ModelSnapshot
+    [Migration("20251127041617_EfcoreDB2FK1")]
+    partial class EfcoreDB2FK1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,6 +32,9 @@ namespace EF_DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookId"));
 
+                    b.Property<int>("BookDetailId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ISBN")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -43,6 +49,8 @@ namespace EF_DataAccess.Migrations
 
                     b.HasKey("BookId");
 
+                    b.HasIndex("BookDetailId");
+
                     b.ToTable("Books");
                 });
 
@@ -53,9 +61,6 @@ namespace EF_DataAccess.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookDetail_Id"));
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
 
                     b.Property<int>("NumberOfChapters")
                         .HasColumnType("int");
@@ -69,27 +74,18 @@ namespace EF_DataAccess.Migrations
 
                     b.HasKey("BookDetail_Id");
 
-                    b.HasIndex("BookId")
-                        .IsUnique();
-
                     b.ToTable("BookDetails");
-                });
-
-            modelBuilder.Entity("EF_DataModel.Models.BookDetail", b =>
-                {
-                    b.HasOne("EF_DataModel.Models.Book", "Book")
-                        .WithOne("BookDetail")
-                        .HasForeignKey("EF_DataModel.Models.BookDetail", "BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
                 });
 
             modelBuilder.Entity("EF_DataModel.Models.Book", b =>
                 {
-                    b.Navigation("BookDetail")
+                    b.HasOne("EF_DataModel.Models.BookDetail", "BookDetail")
+                        .WithMany()
+                        .HasForeignKey("BookDetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BookDetail");
                 });
 #pragma warning restore 612, 618
         }

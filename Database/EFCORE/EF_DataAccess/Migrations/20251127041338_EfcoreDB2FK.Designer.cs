@@ -3,6 +3,7 @@ using EF_DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EF_DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbcontext))]
-    partial class ApplicationDbcontextModelSnapshot : ModelSnapshot
+    [Migration("20251127041338_EfcoreDB2FK")]
+    partial class EfcoreDB2FK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,6 +31,9 @@ namespace EF_DataAccess.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookId"));
+
+                    b.Property<int>("BookDetailId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ISBN")
                         .IsRequired()
@@ -54,7 +60,7 @@ namespace EF_DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookDetail_Id"));
 
-                    b.Property<int>("BookId")
+                    b.Property<int>("Book_Id")
                         .HasColumnType("int");
 
                     b.Property<int>("NumberOfChapters")
@@ -69,7 +75,7 @@ namespace EF_DataAccess.Migrations
 
                     b.HasKey("BookDetail_Id");
 
-                    b.HasIndex("BookId")
+                    b.HasIndex("Book_Id")
                         .IsUnique();
 
                     b.ToTable("BookDetails");
@@ -79,7 +85,7 @@ namespace EF_DataAccess.Migrations
                 {
                     b.HasOne("EF_DataModel.Models.Book", "Book")
                         .WithOne("BookDetail")
-                        .HasForeignKey("EF_DataModel.Models.BookDetail", "BookId")
+                        .HasForeignKey("EF_DataModel.Models.BookDetail", "Book_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
