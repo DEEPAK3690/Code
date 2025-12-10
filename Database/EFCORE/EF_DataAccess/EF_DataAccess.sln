@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_DataModel", "..\EF_DataM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_console", "..\EF_console\EF_console.csproj", "{590C1EE6-4CE9-4A5F-98FC-366AFFB74E8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_WebApp", "..\EF_WebApp\EF_WebApp.csproj", "{8E45FB75-862A-4114-8125-4086E819D28D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{590C1EE6-4CE9-4A5F-98FC-366AFFB74E8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{590C1EE6-4CE9-4A5F-98FC-366AFFB74E8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{590C1EE6-4CE9-4A5F-98FC-366AFFB74E8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E45FB75-862A-4114-8125-4086E819D28D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E45FB75-862A-4114-8125-4086E819D28D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E45FB75-862A-4114-8125-4086E819D28D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E45FB75-862A-4114-8125-4086E819D28D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

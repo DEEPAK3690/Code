@@ -4,6 +4,7 @@ using EF_DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EF_DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbcontext))]
-    partial class ApplicationDbcontextModelSnapshot : ModelSnapshot
+    [Migration("20251128102619_F_bookupdate")]
+    partial class F_bookupdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +37,7 @@ namespace EF_DataAccess.Migrations
 
                     b.HasIndex("BooksBookId");
 
-                    b.ToTable("AuthorBook", (string)null);
+                    b.ToTable("AuthorBook");
                 });
 
             modelBuilder.Entity("EF_DataModel.FluentModels.F_Author", b =>
@@ -176,7 +179,7 @@ namespace EF_DataAccess.Migrations
 
                     b.HasKey("Author_Id");
 
-                    b.ToTable("Authors", (string)null);
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("EF_DataModel.Models.Book", b =>
@@ -207,7 +210,7 @@ namespace EF_DataAccess.Migrations
 
                     b.HasIndex("Publisher_Id");
 
-                    b.ToTable("Books", (string)null);
+                    b.ToTable("Books");
 
                     b.HasData(
                         new
@@ -278,7 +281,7 @@ namespace EF_DataAccess.Migrations
                     b.HasIndex("BookId")
                         .IsUnique();
 
-                    b.ToTable("BookDetails", (string)null);
+                    b.ToTable("BookDetails");
                 });
 
             modelBuilder.Entity("EF_DataModel.Models.Category", b =>
@@ -296,7 +299,7 @@ namespace EF_DataAccess.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
@@ -334,7 +337,7 @@ namespace EF_DataAccess.Migrations
 
                     b.HasKey("Publisher_Id");
 
-                    b.ToTable("Publishers", (string)null);
+                    b.ToTable("Publishers");
 
                     b.HasData(
                         new

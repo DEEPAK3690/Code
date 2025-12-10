@@ -8,10 +8,15 @@ namespace EF_DataAccess
 {
     public class ApplicationDbcontext : DbContext
     {
+        public ApplicationDbcontext(DbContextOptions<ApplicationDbcontext> options) : base(options)
+        {
+
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-TRSDUK0\DEMOSERVER;Database=EFCoreDB2;Trusted_Connection=True;TrustServerCertificate=True;").LogTo(Console.WriteLine,LogLevel.Information);
+            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-TRSDUK0\DEMOSERVER;Database=EFCoreDB2;Trusted_Connection=True;TrustServerCertificate=True;").LogTo(Console.WriteLine, LogLevel.Information); // added in appsettings.json
 
         }
 
@@ -44,6 +49,14 @@ namespace EF_DataAccess
                 new Publisher { Publisher_Id = 3, Name = "Pub 3 Ben", Location = "Hawaii" }
                 );
 
+            var categories = new Category[]
+            {
+                new Category { CategoryId = 1, CategoryName = "Horror" },
+                new Category { CategoryId = 2, CategoryName = "Comedy" },
+                new Category { CategoryId = 3, CategoryName = "Drama" }
+            };
+            modelBuilder.Entity<Category>().HasData(categories);
+
         }
 
         public DbSet<Book> Books { get; set; }
@@ -51,6 +64,9 @@ namespace EF_DataAccess
 
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Author> Authors { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
         public DbSet<F_BookDetail> f_BookDetails { get; set; }
         public DbSet<F_Author> F_authors { get; set; }
         public DbSet<F_Publisher> F_Publishers { get; set; }

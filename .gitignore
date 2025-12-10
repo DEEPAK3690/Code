@@ -29,3 +29,7 @@
 /Database/EFCORE/EF_console/bin
 /Database/EFCORE/EF_console/obj
 /Database/EFCORE/EF_DataAccess/.vs
+/Database/EFCORE/EF_WebApp/bin
+/Database/EFCORE/EF_WebApp/obj
+/Database/EFCORE/EF_DataAccess/.vs
+/Database/EFCORE/EF_DataAccess/.vs

@@ -18,6 +18,8 @@ namespace EF_DataAccess.FluentConfig
             modelBuilder.Property(p => p.Title).IsRequired(); //required key
             modelBuilder.HasKey(p => p.BookId);
             modelBuilder.HasOne(b => b.Publisher).WithMany(b => b.Books).HasForeignKey(p => p.Publisher_Id); // one to many relationship
+            modelBuilder.Property(b => b.Price).HasColumnType("decimal(18,2)");
+
         }
     }
 }
