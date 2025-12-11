@@ -13,7 +13,6 @@ Client → sends HTTP request
 
 Server → returns HTTP response
 
-
 **HTTPS (HyperText Transfer Protocol Secure)**
 
 is the  **secure version of HTTP** , which uses **SSL/TLS encryption** to protect the communication between the client and the server.
@@ -22,7 +21,6 @@ So all data — login info, tokens, or JSON payloads — is  **encrypted before 
 
 HTTP request
 
-
 An **HTTP request** is a message sent from a **client** to a  **server** , asking it to perform a specific operation (GET data, POST new data, etc.).
 
 | Component             | Description                                                                                          |
@@ -30,7 +28,6 @@ An **HTTP request** is a message sent from a **client** to a  **server** , askin
 | 1️⃣ Request Line    | Defines the**HTTP method** , the **URL (resource path)** , and the**HTTP version** |
 | 2️⃣ Headers         | Additional info like content type, authorization, language, etc.                                     |
 | 3️⃣ Body (Optional) | Data sent to the server (mainly in POST/PUT requests)                                                |
-
 
 If you send the above POST request, Web API will:
 
@@ -42,13 +39,11 @@ HTTP response
 
 An **HTTP response** is a message sent by the **server** back to the **client** after processing the request.
 
-
 | Part                  | Example                             | Meaning                              |
 | --------------------- | ----------------------------------- | ------------------------------------ |
 | **Status Line** | `HTTP/1.1 201 Created`            | HTTP version + status code + message |
 | **Headers**     | `Content-Type: application/json`  | Response format                      |
 | **Body**        | `{ "id": 101, "name": "Laptop" }` | JSON data returned to the client     |
-
 
 | Code            | Meaning                       | When Used                      |
 | --------------- | ----------------------------- | ------------------------------ |
@@ -70,7 +65,6 @@ Without routing, your API wouldn’t know which method to execute for a given HT
 
 Every time you define endpoints in your API — so clients can reach specific resources
 
-
 | Type             | Description                          | Example                          |
 | ---------------- | ------------------------------------ | -------------------------------- |
 | Convention-based | Defined in `WebApiConfig.cs`       | `/api/{controller}/{id}`       |
@@ -89,12 +83,36 @@ public class ProductsController : ControllerBase
 
 Models and DTOs
 
-
 A **Model** defines the structure of your data (like a database table).
 
 A **DTO (Data Transfer Object)** is used to control what data is sent to the client.
 
-
-
 * **Without DTO:** Send entire model → might leak internal data.
 * **With DTO:** Send only safe, required fields → secure & optimized.
+
+
+### **What:**
+
+**API Versioning** in ASP.NET Core is a method to manage **multiple versions** of your Web API so that existing clients can continue using older endpoints while newer clients use updated ones.
+
+It allows you to evolve your API  **without breaking compatibility** .
+
+---
+
+### **Why:**
+
+API versioning is important because:
+
+* Applications evolve — endpoints may change, parameters may be added, or responses may differ.
+* Older clients should still function while newer clients use enhanced versions.
+* It allows  **safe iteration** ,  **backward compatibility** , and  **smooth migration** .
+
+---
+
+### **When:**
+
+Use API versioning when:
+
+* Your API is used by external systems or multiple frontend versions.
+* You plan to modify contracts (models, endpoints, or behaviors) in the future.
+* You need a structured approach to maintain  **v1** ,  **v2** , etc., simultaneously.
