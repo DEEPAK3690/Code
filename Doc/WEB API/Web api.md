@@ -90,7 +90,6 @@ A **DTO (Data Transfer Object)** is used to control what data is sent to the cli
 * **Without DTO:** Send entire model → might leak internal data.
 * **With DTO:** Send only safe, required fields → secure & optimized.
 
-
 ### **What:**
 
 **API Versioning** in ASP.NET Core is a method to manage **multiple versions** of your Web API so that existing clients can continue using older endpoints while newer clients use updated ones.
