@@ -33,3 +33,7 @@
 /Database/EFCORE/EF_WebApp/obj
 /Database/EFCORE/EF_DataAccess/.vs
 /Database/EFCORE/EF_DataAccess/.vs
+/c\#/DI_Demo/obj
+/c\#/DI_Demo.Tests/bin
+/c\#/DI_Demo.Tests/obj
+/c\#/DI_Demo/bin

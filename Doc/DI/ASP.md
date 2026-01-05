@@ -1,98 +1,177 @@
-ASP.NET Core Service Lifetimes
+# ASP.NET Core Service Lifetimes
 
 This document summarizes service lifetimes in ASP.NET Core with real-time examples.
 
-Transient (AddTransient)
+---
 
-Created: Every time requested.
+## Table of Contents
 
-Disposed: When the consuming object is disposed (or GC collects it if parent is transient).
+1. [Service Lifetime Overview](#service-lifetime-overview)
+2. [Transient](#transient)
+3. [Scoped](#scoped)
+4. [Singleton](#singleton)
+5. [Comparison Table](#comparison-table)
+6. [Parent Dependency Considerations](#parent-dependency-considerations)
+7. [Common Mistakes](#common-mistakes)
+8. [Real-Life Analogy](#real-life-analogy)
+9. [References](#references)
 
-Use case: Lightweight, stateless services.
+---
 
-Example:
+## Service Lifetime Overview
+
+ASP.NET Core provides three service lifetimes:
+
+- **Transient**: Created every time requested
+- **Scoped**: Created once per HTTP request
+- **Singleton**: Created once for the entire application
+
+---
+
+## Transient
+
+### `AddTransient`
+
+**Characteristics:**
+
+- **Created:** Every time requested
+- **Disposed:** When the consuming object is disposed (or GC collects it if parent is transient)
+- **Use case:** Lightweight, stateless services
+
+### Example:
+
+```csharp
 builder.Services.AddTransient<IEmailService, EmailService>();
+```
 
-EmailService is created every time OrderService asks for it.
+**Behavior:**
 
-Multiple requests create multiple instances.
+- `EmailService` is created every time `OrderService` asks for it
+- Multiple requests create multiple instances
 
-Real-Time Flow:
+### Real-Time Flow:
+
+```
 HTTP Request Start
-|
-Create OrderService (Scoped)
-|
-|-- Create EmailService (Transient)
-|
-Use EmailService
-|
+    |
+    └── Create OrderService (Scoped)
+        |
+        └── Create EmailService (Transient)
+            |
+            └── Use EmailService
+                |
 HTTP Request End
-|
-Dispose OrderService
-|
-Dispose EmailService
+    |
+    ├── Dispose OrderService
+    └── Dispose EmailService
+```
 
-Scoped (AddScoped)
+---
 
-Created: Once per HTTP request.
+## Scoped
 
-Shared: Across services within the same request.
+### `AddScoped`
 
-Disposed: At the end of the request.
+**Characteristics:**
 
-Use case: Business logic, DbContext.
+- **Created:** Once per HTTP request
+- **Shared:** Across services within the same request
+- **Disposed:** At the end of the request
+- **Use case:** Business logic, DbContext
 
-Example:
+### Example:
+
+```csharp
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<AppDbContext>();
+```
 
-One OrderService instance per request.
+**Behavior:**
 
-Shared DbContext for all services in request.
+- One `OrderService` instance per request
+- Shared `DbContext` for all services in request
 
-Singleton (AddSingleton)
+---
 
-Created: Once for the entire application.
+## Singleton
 
-Shared: Across all requests and users.
+### `AddSingleton`
 
-Disposed: When app shuts down.
+**Characteristics:**
 
-Use case: Caching, configuration, shared data.
+- **Created:** Once for the entire application
+- **Shared:** Across all requests and users
+- **Disposed:** When app shuts down
+- **Use case:** Caching, configuration, shared data
 
-Example:
+### Example:
+
+```csharp
 builder.Services.AddSingleton<IProductCache, ProductCache>();
+```
 
-ProductCache is the same for all requests.
+**Behavior:**
 
-Key Rules:
+- `ProductCache` is the same for all requests
 
-Transient: created every time requested, short-lived.
+---
 
-Scoped: one per request, shared within request.
+## Comparison Table
 
-Singleton: one for app lifetime, shared across all.
+| Lifetime  | Created          | Shared Across       | Disposed             | Use Case                  |
+| --------- | ---------------- | ------------------- | -------------------- | ------------------------- |
+| Transient | Every time       | Not shared          | When parent disposed | Lightweight, stateless    |
+| Scoped    | Once per request | Within same request | End of request       | Business logic, DbContext |
+| Singleton | Once per app     | All requests/users  | App shutdown         | Caching, configuration    |
 
-Parent Dependency Considerations:
-Parent Service: Scoped → Transient disposed at end of request
-Parent Service: Transient → Transient disposed when GC collects it
-Parent Service: Singleton → Transient disposed at app shutdown (bad if holding transient)
+---
 
-Common Mistakes:
+## Parent Dependency Considerations
 
-Injecting Scoped into Singleton → lifetime mismatch.
+Understanding how parent service lifetime affects child dependencies:
 
-Using heavy objects as Transient → unnecessary GC pressure.
+| Parent Service | Child Service | Disposal Behavior                                     |
+| -------------- | ------------- | ----------------------------------------------------- |
+| Scoped         | Transient     | Transient disposed at end of request                  |
+| Transient      | Transient     | Transient disposed when GC collects it                |
+| Singleton      | Transient     | Transient disposed at app shutdown ⚠️ (problematic) |
 
-Using DbContext as Transient → multiple instances, inconsistent data.
+> **Warning:** Injecting shorter-lived services into longer-lived services can cause issues.
 
-Real-Life Analogy:
-Singleton → Store inventory (shared for all)
-Scoped → Cashier per customer (per request)
-Transient → Receipt printer (new for every use)
+---
 
-References:
+## Common Mistakes
 
-Microsoft Docs: Dependency Injection in ASP.NET Core
+❌ **Injecting Scoped into Singleton**
 
-Real-time e-commerce example: Order processing, EmailService, ProductCache
+- Causes lifetime mismatch
+- Scoped service may be disposed while Singleton still holds reference
+
+❌ **Using heavy objects as Transient**
+
+- Creates unnecessary GC pressure
+- Performance degradation
+
+❌ **Using DbContext as Transient**
+
+- Multiple instances created
+- Inconsistent data and tracking issues
+
+---
+
+## Real-Life Analogy
+
+Think of service lifetimes like a store:
+
+| Lifetime  | Analogy                                     |
+| --------- | ------------------------------------------- |
+| Singleton | Store inventory (shared for all customers)  |
+| Scoped    | Cashier per customer (one per transaction)  |
+| Transient | Receipt printer (new receipt for every use) |
+
+---
+
+## References
+
+- [Microsoft Docs: Dependency Injection in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection)
+- Real-time e-commerce example: Order processing, EmailService, ProductCache
