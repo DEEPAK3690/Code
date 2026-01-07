@@ -37,3 +37,8 @@
 /c\#/DI_Demo.Tests/bin
 /c\#/DI_Demo.Tests/obj
 /c\#/DI_Demo/bin
+/c\#/DI_WebApp.Tests/bin
+/c\#/DI_WebApp.Tests/obj
+/c\#/DI_WebApp/bin
+/c\#/DI_WebApp/obj
+/c\#/DI_WebApp/.vs
